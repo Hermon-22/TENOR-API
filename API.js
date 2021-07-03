@@ -1,45 +1,38 @@
 let inputVal = document.getElementById('inp');
+let xlm = new XMLHttpRequest();
 let searchBtn = document.getElementById('search');
 let apInterface = document.getElementById('api');
-let inpt = ''
-//console.log(apInterface)
+apInterface.innerHTML='';
 
 searchBtn.addEventListener("click",function(e){
     e.preventDefault();
-    //inputVal.innerHTML='';
+    apInterface.innerHTML='';
     var inpt = inputVal.value;
     if(inpt===''){
         alert('PLEASE TYPE ANY WORD!!!!');
     }
     else{
-        click(inpt)
-    }
-
-    function click(type){
-        let ur = 'https://g.tenor.com/v1/search?&limit=10&key=LBKTL4NN5LAY&q='+type;
-        var xlm = new XMLHttpRequest();
+        let ur = 'https://g.tenor.com/v1/search?&limit=10&key=LBKTL4NN5LAY&q='+inpt;
         xlm.open('GET',ur)
         xlm.responseType='json';
-
         xlm.onreadystatechange = function(){        
-        if(xlm.readyState === 4 && xlm.status ===200){
-            const click = xlm.response
-            for(let i=0;i<click.results.length;i++){
-                let mediaGif = click.results[i].media[0].gif.url;    
-                var gif = document.createElement('img');    
-                gif.setAttribute('src', click.results[i].media[0].gif.url)
-                gif.getAttribute('id','collection')
-                apInterface.appendChild(gif)
-                apInterface.setAttribute('alt','SORRY!!GIF DIDNT WORK')    
-                
-            }
-            //console.log(gif)        
-            }
+            if(xlm.readyState === 4 && xlm.status ===200){
+                let clck = xlm.response.results
+                callOut(clck)
+                }
         }
     xlm.send();
     }
 })
-function callOut(click){
-    
+
+function callOut(arc){
+    for(let i=0;i<=arc.length;i++){
+        let mediaGif = arc[i].media[0].gif.url;    
+        var gif = document.createElement('img');    
+        gif.setAttribute('src',mediaGif)
+        gif.setAttribute('alt','SORRY!!GIF DIDNT WORK')    
+        gif.innerHTML = mediaGif
+        apInterface.appendChild(gif)
+    }
 }
-///TTTTTTTTTRRRRRRRRRRYYYYYYYYYYYYYYY!!!
+//WORKED DONE!!!

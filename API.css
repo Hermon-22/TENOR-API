@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background: rgba(25, 169, 212, 0.534);
+    background: rgba(25, 168, 212, 0.322);
 }
 #box-upper{    
     background: url(https://media.giphy.com/media/YmzO3P2e4qYkitoVcF/giphy.gif)
@@ -23,11 +23,11 @@ body{
 img:hover{
     transform: rotate(360deg);
 }
-#api{
+/* #api{
     background: rgba(223, 202, 16, 0.74);
     border:1px rgb(248, 248, 248) double;
     padding: 0% 0;
-}
+} */
 #api img{
     border-radius:70px;
     
